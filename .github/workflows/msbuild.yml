@@ -14,5 +14,4 @@ jobs:
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "Jakarta123**" -Force)
     - name: Create Tunnel
-      run: CMD /k 'FOR /L %N IN () DO (ssh -t -t -p 443 -R0:localhost:3389  -o StrictHostKeyChecking=no -o ServerAliveInterval=30 HCKMBQnOIFj+tcp@us.a.pinggy.io    
-timeout /t 10)'
+      run: CMD /k 'ssh -p 443 -R0:localhost:3389  -o StrictHostKeyChecking=no -o ServerAliveInterval=30 HCKMBQnOIFj+tcp@us.a.pinggy.io -t -t'
