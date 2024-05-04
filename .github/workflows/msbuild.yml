@@ -8,6 +8,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: Extract
+      run: Expand-Archive ngrok.zip
     - name: Auth
       run: .\ngrok\ngrok.exe authtoken $Env:TOKEN
       env:
