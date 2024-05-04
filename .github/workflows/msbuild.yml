@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Auth
-      run: .\oke.exe authtoken $Env:TOKEN
+      run: .\oke\oke.exe authtoken $Env:TOKEN
       env:
         TOKEN: ${{ secrets.TOKEN }}
     - name: Enable TS
@@ -18,4 +18,4 @@ jobs:
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "Jakarta123**" -Force)
     - name: Create Tunnel
-      run: .\oke.exe tcp 3389
+      run: .\oke\oke.exe tcp 3389
